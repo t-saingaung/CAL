@@ -1,15 +1,19 @@
 package com.example.lint.checks.detector
 
 import com.android.annotations.Nullable
-import com.android.tools.lint.detector.api.*
-import com.example.lint.checks.Constants.Companion.ATTRIBUTE_NAME
-import com.example.lint.checks.Constants.Companion.DESCRIPTION
-import com.example.lint.checks.Constants.Companion.EXPLANATION
-import com.example.lint.checks.Constants.Companion.ID
-import com.example.lint.checks.Constants.Companion.SCHEMA
-import com.example.lint.checks.Constants.Companion.category
-import com.example.lint.checks.Constants.Companion.priority
-import com.example.lint.checks.Constants.Companion.severity
+import com.android.tools.lint.detector.api.Implementation
+import com.android.tools.lint.detector.api.Issue
+import com.android.tools.lint.detector.api.ResourceXmlDetector
+import com.android.tools.lint.detector.api.Scope
+import com.android.tools.lint.detector.api.XmlContext
+import com.example.lint.checks.Constants.ATTRIBUTE_NAME
+import com.example.lint.checks.Constants.DESCRIPTION
+import com.example.lint.checks.Constants.EXPLANATION
+import com.example.lint.checks.Constants.ID
+import com.example.lint.checks.Constants.SCHEMA
+import com.example.lint.checks.Constants.category
+import com.example.lint.checks.Constants.priority
+import com.example.lint.checks.Constants.severity
 import org.w3c.dom.Element
 
 class ConstraintLayoutIDDetector : ResourceXmlDetector() {
