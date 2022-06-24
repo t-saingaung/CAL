@@ -1,0 +1,1595 @@
+{
+    "$schema" : "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+    "version" : "2.1.0",
+    "runs" : [
+        {
+            "tool": {
+                "driver": {
+                    "name": "Android Lint",
+                    "fullName": "Android Lint (in gradle)",
+                    "version": "7.2.0",
+                    "semanticVersion": "7.2.0",
+                    "organization": "Google",
+                    "informationUri": "https://developer.android.com/studio/write/lint",
+                    "fullDescription": {
+                        "text": "Static analysis originally for Android source code but now performing general analysis"
+                    },
+                    "language": "en-US",
+                    "rules": [
+                        {
+                            "id": "ContentDescription",
+                            "shortDescription": {
+                                "text": "Image without contentDescription",
+                                "markdown": "Image without `contentDescription`"
+                            },
+                            "fullDescription": {
+                                "text": "Non-textual widgets like ImageViews and ImageButtons should use the contentDescription attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.\n\nNote that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=\"ContentDescription\" attribute.\n\nNote that for text fields, you should not set both the hint and the contentDescription attributes since the hint will never be shown. Just set the hint.",
+                                "markdown": "Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.\n\nNote that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=\"ContentDescription\" attribute.\n\nNote that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 80
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Accessibility"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "FragmentTagUsage",
+                            "shortDescription": {
+                                "text": "Use FragmentContainerView instead of the <fragment> tag"
+                            },
+                            "fullDescription": {
+                                "text": "FragmentContainerView replaces the <fragment> tag as the preferred                 way of adding fragments via XML. Unlike the <fragment> tag, FragmentContainerView                 uses a normal FragmentTransaction under the hood to add the initial fragment,                 allowing further FragmentTransaction operations on the FragmentContainerView                 and providing a consistent timing for lifecycle events.",
+                                "markdown": "FragmentContainerView replaces the <fragment> tag as the preferred                 way of adding fragments via XML. Unlike the <fragment> tag, FragmentContainerView                 uses a normal `FragmentTransaction` under the hood to add the initial fragment,                 allowing further FragmentTransaction operations on the FragmentContainerView                 and providing a consistent timing for lifecycle events."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 60
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Correctness"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "GradleDependency",
+                            "shortDescription": {
+                                "text": "Obsolete Gradle Dependency"
+                            },
+                            "fullDescription": {
+                                "text": "This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 70
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Correctness"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "MissingIDNamingPattern",
+                            "shortDescription": {
+                                "text": "id naming is not correct"
+                            },
+                            "fullDescription": {
+                                "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 60
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Lint Implementation Issues"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "ObsoleteSdkInt",
+                            "shortDescription": {
+                                "text": "Obsolete SDK_INT Version Check"
+                            },
+                            "fullDescription": {
+                                "text": "This check flags version checks that are not necessary, because the minSdkVersion (or surrounding known API level) is already at least as high as the version checked for.\n\nSimilarly, it also looks for resources in -vNN folders, such as values-v14 where the version qualifier is less than or equal to the minSdkVersion, where the contents should be merged into the best folder.",
+                                "markdown": "This check flags version checks that are not necessary, because the `minSdkVersion` (or surrounding known API level) is already at least as high as the version checked for.\n\nSimilarly, it also looks for resources in `-vNN` folders, such as `values-v14` where the version qualifier is less than or equal to the `minSdkVersion`, where the contents should be merged into the best folder."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 50
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Performance"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "RedundantLabel",
+                            "shortDescription": {
+                                "text": "Redundant label on activity"
+                            },
+                            "fullDescription": {
+                                "text": "When an activity does not have a label attribute, it will use the one from the application tag. Since the application has already specified the same label, the label on this activity can be omitted."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 60
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Correctness"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "UnusedResources",
+                            "shortDescription": {
+                                "text": "Unused resources"
+                            },
+                            "fullDescription": {
+                                "text": "Unused resources make applications larger and slow down builds.\n\nThe unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.\n\nYou can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 80
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Performance"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "originalUriBaseIds": {
+                "%SRCROOT%": {
+                    "uri": "file:///Users/t-sai.ngaung/AndroidStudioProjects/MyApplication/"
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FragmentTagUsage",
+                    "ruleIndex": 1,
+                    "message": {
+                        "text": "Replace the <fragment> tag with FragmentContainerView."
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/content_main.xml"
+                                },
+                                "region": {
+                                    "startLine": 8,
+                                    "startColumn": 6,
+                                    "endLine": 8,
+                                    "endColumn": 14,
+                                    "charOffset": 358,
+                                    "charLength": 8,
+                                    "snippet": {
+                                        "text": "fragment"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 6,
+                                    "endLine": 11,
+                                    "snippet": {
+                                        "text": "    app:layout_behavior=\"@string/appbar_scrolling_view_behavior\">\n\n    <fragment\n        android:id=\"@+id/nav_host_fragment_content_main\""
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with androidx.fragment.app.FragmentContainerView"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/layout/content_main.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 8,
+                                                "startColumn": 6,
+                                                "charOffset": 358,
+                                                "endLine": 8,
+                                                "endColumn": 14,
+                                                "charLength": 8
+                                            },
+                                            "insertedContent": {
+                                                "text": "androidx.fragment.app.FragmentContainerView\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "998b36bce20c470e"
+                    }
+                },
+                {
+                    "ruleId": "RedundantLabel",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Redundant label can be removed"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/AndroidManifest.xml"
+                                },
+                                "region": {
+                                    "startLine": 19,
+                                    "startColumn": 13,
+                                    "endLine": 19,
+                                    "endColumn": 45,
+                                    "charOffset": 733,
+                                    "charLength": 32,
+                                    "snippet": {
+                                        "text": "android:label=\"@string/app_name\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 17,
+                                    "endLine": 22,
+                                    "snippet": {
+                                        "text": "            android:name=\".MainActivity\"\n            android:exported=\"true\"\n            android:label=\"@string/app_name\"\n            android:theme=\"@style/Theme.MyApplication.NoActionBar\">"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Delete label"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/AndroidManifest.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 19,
+                                                "startColumn": 13,
+                                                "charOffset": 733,
+                                                "endLine": 19,
+                                                "endColumn": 45,
+                                                "charLength": 32
+                                            },
+                                            "insertedContent": {
+                                                "text": "\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "e6b1b0bf21b834e4"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of com.android.tools.lint:lint-api than 30.2.0 is available: 30.2.1"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "checks/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 15,
+                                    "startColumn": 17,
+                                    "endLine": 15,
+                                    "endColumn": 57,
+                                    "charOffset": 345,
+                                    "charLength": 40,
+                                    "snippet": {
+                                        "text": "\"com.android.tools.lint:lint-api:30.2.0\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 13,
+                                    "endLine": 18,
+                                    "snippet": {
+                                        "text": "dependencies {\n    // For a description of the below dependencies, see the main project README\n    compileOnly \"com.android.tools.lint:lint-api:30.2.0\"\n    // You typically don't need this one:"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 30.2.1"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "checks/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 15,
+                                                "startColumn": 50,
+                                                "charOffset": 378,
+                                                "endLine": 15,
+                                                "endColumn": 56,
+                                                "charLength": 6
+                                            },
+                                            "insertedContent": {
+                                                "text": "30.2.1\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "e559f5689aa01503"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of com.android.tools.lint:lint-checks than 30.2.0 is available: 30.2.1"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "checks/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 17,
+                                    "startColumn": 17,
+                                    "endLine": 17,
+                                    "endColumn": 60,
+                                    "charOffset": 444,
+                                    "charLength": 43,
+                                    "snippet": {
+                                        "text": "\"com.android.tools.lint:lint-checks:30.2.0\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 15,
+                                    "endLine": 20,
+                                    "snippet": {
+                                        "text": "    compileOnly \"com.android.tools.lint:lint-api:30.2.0\"\n    // You typically don't need this one:\n    compileOnly \"com.android.tools.lint:lint-checks:30.2.0\"\n    compileOnly \"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21\""
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 30.2.1"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "checks/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 17,
+                                                "startColumn": 53,
+                                                "charOffset": 480,
+                                                "endLine": 17,
+                                                "endColumn": 59,
+                                                "charLength": 6
+                                            },
+                                            "insertedContent": {
+                                                "text": "30.2.1\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "c6dc8eee99f32e00"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of org.jetbrains.kotlin:kotlin-stdlib-jdk7 than 1.6.21 is available: 1.7.0"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "checks/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 18,
+                                    "startColumn": 17,
+                                    "endLine": 18,
+                                    "endColumn": 65,
+                                    "charOffset": 504,
+                                    "charLength": 48,
+                                    "snippet": {
+                                        "text": "\"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 16,
+                                    "endLine": 21,
+                                    "snippet": {
+                                        "text": "    // You typically don't need this one:\n    compileOnly \"com.android.tools.lint:lint-checks:30.2.0\"\n    compileOnly \"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21\"\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 1.7.0"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "checks/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 18,
+                                                "startColumn": 58,
+                                                "charOffset": 545,
+                                                "endLine": 18,
+                                                "endColumn": 64,
+                                                "charLength": 6
+                                            },
+                                            "insertedContent": {
+                                                "text": "1.7.0\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "03a1e91f7d5aa73a"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of com.android.tools.lint:lint than 30.2.0 is available: 30.2.1"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "checks/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 21,
+                                    "startColumn": 24,
+                                    "endLine": 21,
+                                    "endColumn": 60,
+                                    "charOffset": 621,
+                                    "charLength": 36,
+                                    "snippet": {
+                                        "text": "\"com.android.tools.lint:lint:30.2.0\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 19,
+                                    "endLine": 24,
+                                    "snippet": {
+                                        "text": "\n    testImplementation \"junit:junit:4.13.2\"\n    testImplementation \"com.android.tools.lint:lint:30.2.0\"\n    testImplementation \"com.android.tools.lint:lint-tests:30.2.0\""
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 30.2.1"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "checks/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 21,
+                                                "startColumn": 53,
+                                                "charOffset": 650,
+                                                "endLine": 21,
+                                                "endColumn": 59,
+                                                "charLength": 6
+                                            },
+                                            "insertedContent": {
+                                                "text": "30.2.1\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "81070ea635bb3fe0"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of com.android.tools.lint:lint-tests than 30.2.0 is available: 30.2.1"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "checks/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 22,
+                                    "startColumn": 24,
+                                    "endLine": 22,
+                                    "endColumn": 66,
+                                    "charOffset": 681,
+                                    "charLength": 42,
+                                    "snippet": {
+                                        "text": "\"com.android.tools.lint:lint-tests:30.2.0\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 20,
+                                    "endLine": 25,
+                                    "snippet": {
+                                        "text": "    testImplementation \"junit:junit:4.13.2\"\n    testImplementation \"com.android.tools.lint:lint:30.2.0\"\n    testImplementation \"com.android.tools.lint:lint-tests:30.2.0\"\n}"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 30.2.1"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "checks/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 22,
+                                                "startColumn": 59,
+                                                "charOffset": 716,
+                                                "endLine": 22,
+                                                "endColumn": 65,
+                                                "charLength": 6
+                                            },
+                                            "insertedContent": {
+                                                "text": "30.2.1\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "38ab5e6b961e3fc7"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.8.0"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 48,
+                                    "startColumn": 20,
+                                    "endLine": 48,
+                                    "endColumn": 50,
+                                    "charOffset": 1150,
+                                    "charLength": 30,
+                                    "snippet": {
+                                        "text": "'androidx.core:core-ktx:1.7.0'"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 46,
+                                    "endLine": 51,
+                                    "snippet": {
+                                        "text": "    implementation project(':library')\n\n    implementation 'androidx.core:core-ktx:1.7.0'\n    implementation 'androidx.appcompat:appcompat:1.3.0'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 1.8.0"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 48,
+                                                "startColumn": 44,
+                                                "charOffset": 1174,
+                                                "endLine": 48,
+                                                "endColumn": 49,
+                                                "charLength": 5
+                                            },
+                                            "insertedContent": {
+                                                "text": "1.8.0\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "f3d24a93934908e9"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of androidx.appcompat:appcompat than 1.3.0 is available: 1.4.2"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 49,
+                                    "startColumn": 20,
+                                    "endLine": 49,
+                                    "endColumn": 56,
+                                    "charOffset": 1200,
+                                    "charLength": 36,
+                                    "snippet": {
+                                        "text": "'androidx.appcompat:appcompat:1.3.0'"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 47,
+                                    "endLine": 52,
+                                    "snippet": {
+                                        "text": "\n    implementation 'androidx.core:core-ktx:1.7.0'\n    implementation 'androidx.appcompat:appcompat:1.3.0'\n    implementation 'com.google.android.material:material:1.4.0'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 1.4.2"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 49,
+                                                "startColumn": 50,
+                                                "charOffset": 1230,
+                                                "endLine": 49,
+                                                "endColumn": 55,
+                                                "charLength": 5
+                                            },
+                                            "insertedContent": {
+                                                "text": "1.4.2\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "a6476c3cd1a8e957"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of com.google.android.material:material than 1.4.0 is available: 1.6.1"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 50,
+                                    "startColumn": 20,
+                                    "endLine": 50,
+                                    "endColumn": 64,
+                                    "charOffset": 1256,
+                                    "charLength": 44,
+                                    "snippet": {
+                                        "text": "'com.google.android.material:material:1.4.0'"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 48,
+                                    "endLine": 53,
+                                    "snippet": {
+                                        "text": "    implementation 'androidx.core:core-ktx:1.7.0'\n    implementation 'androidx.appcompat:appcompat:1.3.0'\n    implementation 'com.google.android.material:material:1.4.0'\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 1.6.1"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 50,
+                                                "startColumn": 58,
+                                                "charOffset": 1294,
+                                                "endLine": 50,
+                                                "endColumn": 63,
+                                                "charLength": 5
+                                            },
+                                            "insertedContent": {
+                                                "text": "1.6.1\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "5c3b9e42909f35cb"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of androidx.constraintlayout:constraintlayout than 2.0.4 is available: 2.1.4"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 51,
+                                    "startColumn": 20,
+                                    "endLine": 51,
+                                    "endColumn": 70,
+                                    "charOffset": 1320,
+                                    "charLength": 50,
+                                    "snippet": {
+                                        "text": "'androidx.constraintlayout:constraintlayout:2.0.4'"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 49,
+                                    "endLine": 54,
+                                    "snippet": {
+                                        "text": "    implementation 'androidx.appcompat:appcompat:1.3.0'\n    implementation 'com.google.android.material:material:1.4.0'\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 2.1.4"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 51,
+                                                "startColumn": 64,
+                                                "charOffset": 1364,
+                                                "endLine": 51,
+                                                "endColumn": 69,
+                                                "charLength": 5
+                                            },
+                                            "insertedContent": {
+                                                "text": "2.1.4\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "393f50481d863ba4"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of androidx.navigation:navigation-fragment-ktx than 2.3.5 is available: 2.4.2"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 52,
+                                    "startColumn": 20,
+                                    "endLine": 52,
+                                    "endColumn": 71,
+                                    "charOffset": 1390,
+                                    "charLength": 51,
+                                    "snippet": {
+                                        "text": "'androidx.navigation:navigation-fragment-ktx:2.3.5'"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 50,
+                                    "endLine": 55,
+                                    "snippet": {
+                                        "text": "    implementation 'com.google.android.material:material:1.4.0'\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'\n    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 2.4.2"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 52,
+                                                "startColumn": 65,
+                                                "charOffset": 1435,
+                                                "endLine": 52,
+                                                "endColumn": 70,
+                                                "charLength": 5
+                                            },
+                                            "insertedContent": {
+                                                "text": "2.4.2\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "fe7411644a296bbb"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 2,
+                    "message": {
+                        "text": "A newer version of androidx.navigation:navigation-ui-ktx than 2.3.5 is available: 2.4.2"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 53,
+                                    "startColumn": 20,
+                                    "endLine": 53,
+                                    "endColumn": 65,
+                                    "charOffset": 1461,
+                                    "charLength": 45,
+                                    "snippet": {
+                                        "text": "'androidx.navigation:navigation-ui-ktx:2.3.5'"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 51,
+                                    "endLine": 56,
+                                    "snippet": {
+                                        "text": "    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'\n    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'\n    testImplementation 'junit:junit:4.13.2'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Change to 2.4.2"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/build.gradle"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 53,
+                                                "startColumn": 59,
+                                                "charOffset": 1500,
+                                                "endLine": 53,
+                                                "endColumn": 64,
+                                                "charLength": 5
+                                            },
+                                            "insertedContent": {
+                                                "text": "2.4.2\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "90b53a653fd12ac1"
+                    }
+                },
+                {
+                    "ruleId": "ObsoleteSdkInt",
+                    "ruleIndex": 4,
+                    "message": {
+                        "text": "Unnecessary; SDK_INT is always >= 21"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values-night/themes.xml"
+                                },
+                                "region": {
+                                    "startLine": 13,
+                                    "startColumn": 45,
+                                    "endLine": 13,
+                                    "endColumn": 64,
+                                    "charOffset": 713,
+                                    "charLength": 19,
+                                    "snippet": {
+                                        "text": "tools:targetApi=\"l\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 11,
+                                    "endLine": 16,
+                                    "snippet": {
+                                        "text": "        <item name=\"colorOnSecondary\">@color/black</item>\n        <!-- Status bar color. -->\n        <item name=\"android:statusBarColor\" tools:targetApi=\"l\">?attr/colorPrimaryVariant</item>\n        <!-- Customize your theme here. -->"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Delete tools:targetApi"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values-night/themes.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 13,
+                                                "startColumn": 45,
+                                                "charOffset": 713,
+                                                "endLine": 13,
+                                                "endColumn": 64,
+                                                "charLength": 19
+                                            },
+                                            "insertedContent": {
+                                                "text": "\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "5e3e30c8a79995de"
+                    }
+                },
+                {
+                    "ruleId": "ObsoleteSdkInt",
+                    "ruleIndex": 4,
+                    "message": {
+                        "text": "Unnecessary; SDK_INT is always >= 21"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/themes.xml"
+                                },
+                                "region": {
+                                    "startLine": 13,
+                                    "startColumn": 45,
+                                    "endLine": 13,
+                                    "endColumn": 64,
+                                    "charOffset": 713,
+                                    "charLength": 19,
+                                    "snippet": {
+                                        "text": "tools:targetApi=\"l\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 11,
+                                    "endLine": 16,
+                                    "snippet": {
+                                        "text": "        <item name=\"colorOnSecondary\">@color/black</item>\n        <!-- Status bar color. -->\n        <item name=\"android:statusBarColor\" tools:targetApi=\"l\">?attr/colorPrimaryVariant</item>\n        <!-- Customize your theme here. -->"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Delete tools:targetApi"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values/themes.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 13,
+                                                "startColumn": 45,
+                                                "charOffset": 713,
+                                                "endLine": 13,
+                                                "endColumn": 64,
+                                                "charLength": 19
+                                            },
+                                            "insertedContent": {
+                                                "text": "\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "5e3e30c8a79995de"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.layout.fragment_first_copy appears to be unused",
+                        "markdown": "The resource `R.layout.fragment_first_copy` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_first_copy.xml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 1,
+                                    "endLine": 39,
+                                    "endColumn": 48,
+                                    "charOffset": 39,
+                                    "charLength": 1352,
+                                    "snippet": {
+                                        "text": "<androidx.appcompat.widget.LinearLayoutCompat xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:orientation=\"vertical\"\n    tools:context=\".FirstFragment\">\n\n    <TextView\n        android:id=\"@+id/tv\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/textview_two\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/abc_text_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/_text_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n</androidx.appcompat.widget.LinearLayoutCompat>"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 1,
+                                    "endLine": 39,
+                                    "snippet": {
+                                        "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.appcompat.widget.LinearLayoutCompat xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:orientation=\"vertical\"\n    tools:context=\".FirstFragment\">\n\n    <TextView\n        android:id=\"@+id/tv\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/textview_two\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/abc_text_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/_text_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n\n</androidx.appcompat.widget.LinearLayoutCompat>"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "a5625ec388fe558f"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.hello_second_fragment appears to be unused",
+                        "markdown": "The resource `R.string.hello_second_fragment` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 11,
+                                    "startColumn": 13,
+                                    "endLine": 11,
+                                    "endColumn": 41,
+                                    "charOffset": 469,
+                                    "charLength": 28,
+                                    "snippet": {
+                                        "text": "name=\"hello_second_fragment\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 9,
+                                    "endLine": 14,
+                                    "snippet": {
+                                        "text": "\n    <string name=\"hello_first_fragment\">Hello first fragment</string>\n    <string name=\"hello_second_fragment\">Hello second fragment. Arg: %1$s</string>\n</resources"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "22a50231f47e3bfb"
+                    }
+                },
+                {
+                    "ruleId": "ContentDescription",
+                    "ruleIndex": 0,
+                    "message": {
+                        "text": "Missing contentDescription attribute on image",
+                        "markdown": "Missing `contentDescription` attribute on image"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/activity_main.xml"
+                                },
+                                "region": {
+                                    "startLine": 25,
+                                    "startColumn": 6,
+                                    "endLine": 25,
+                                    "endColumn": 75,
+                                    "charOffset": 1002,
+                                    "charLength": 69,
+                                    "snippet": {
+                                        "text": "com.google.android.material.floatingactionbutton.FloatingActionButton"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 23,
+                                    "endLine": 28,
+                                    "snippet": {
+                                        "text": "    <include layout=\"@layout/content_main\" />\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:id=\"@+id/fab\""
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Set contentDescription"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/layout/activity_main.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 32,
+                                                "startColumn": 9,
+                                                "charOffset": 1339
+                                            },
+                                            "insertedContent": {
+                                                "text": "android:contentDescription=\"TODO\" \n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "1950d866103e1aa7"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_first.xml"
+                                },
+                                "region": {
+                                    "startLine": 9,
+                                    "startColumn": 5,
+                                    "endLine": 17,
+                                    "endColumn": 53,
+                                    "charOffset": 378,
+                                    "charLength": 411,
+                                    "snippet": {
+                                        "text": "<TextView\n        android:id=\"@+id/textview_first\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\"\n        app:layout_constraintBottom_toTopOf=\"@id/button_first\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 7,
+                                    "endLine": 20,
+                                    "snippet": {
+                                        "text": "    tools:context=\".FirstFragment\">\n\n    <TextView\n        android:id=\"@+id/textview_first\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\"\n        app:layout_constraintBottom_toTopOf=\"@id/button_first\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "5c918fe04672f1a7"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_first.xml"
+                                },
+                                "region": {
+                                    "startLine": 19,
+                                    "startColumn": 5,
+                                    "endLine": 27,
+                                    "endColumn": 68,
+                                    "charOffset": 795,
+                                    "charLength": 399,
+                                    "snippet": {
+                                        "text": "<Button\n        android:id=\"@+id/button_first\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/next\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/textview_first\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 17,
+                                    "endLine": 30,
+                                    "snippet": {
+                                        "text": "        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <Button\n        android:id=\"@+id/button_first\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/next\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/textview_first\" />\n</androidx.constraintlayout.widget.ConstraintLayout"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "e875b9bdccbc0870"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_first_copy.xml"
+                                },
+                                "region": {
+                                    "startLine": 10,
+                                    "startColumn": 5,
+                                    "endLine": 14,
+                                    "endColumn": 55,
+                                    "charOffset": 408,
+                                    "charLength": 182,
+                                    "snippet": {
+                                        "text": "<TextView\n        android:id=\"@+id/tv\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 8,
+                                    "endLine": 17,
+                                    "snippet": {
+                                        "text": "    tools:context=\".FirstFragment\">\n\n    <TextView\n        android:id=\"@+id/tv\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "d70be37241dc977f"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_first_copy.xml"
+                                },
+                                "region": {
+                                    "startLine": 16,
+                                    "startColumn": 5,
+                                    "endLine": 20,
+                                    "endColumn": 55,
+                                    "charOffset": 596,
+                                    "charLength": 192,
+                                    "snippet": {
+                                        "text": "<TextView\n        android:id=\"@+id/textview_two\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 14,
+                                    "endLine": 23,
+                                    "snippet": {
+                                        "text": "        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/textview_two\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "64b0f8f6cede73ed"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_first_copy.xml"
+                                },
+                                "region": {
+                                    "startLine": 28,
+                                    "startColumn": 5,
+                                    "endLine": 32,
+                                    "endColumn": 55,
+                                    "charOffset": 993,
+                                    "charLength": 190,
+                                    "snippet": {
+                                        "text": "<TextView\n        android:id=\"@+id/_text_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 26,
+                                    "endLine": 35,
+                                    "snippet": {
+                                        "text": "        android:text=\"@string/hello_first_fragment\" />\n\n    <TextView\n        android:id=\"@+id/_text_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/hello_first_fragment\" />\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "978b7396cd1e7bac"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_second.xml"
+                                },
+                                "region": {
+                                    "startLine": 9,
+                                    "startColumn": 5,
+                                    "endLine": 16,
+                                    "endColumn": 53,
+                                    "charOffset": 379,
+                                    "charLength": 361,
+                                    "snippet": {
+                                        "text": "<TextView\n        android:id=\"@+id/textview_second\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintBottom_toTopOf=\"@id/button_second\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 7,
+                                    "endLine": 19,
+                                    "snippet": {
+                                        "text": "    tools:context=\".SecondFragment\">\n\n    <TextView\n        android:id=\"@+id/textview_second\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintBottom_toTopOf=\"@id/button_second\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "3cd5cbfe3ec58963"
+                    }
+                },
+                {
+                    "ruleId": "MissingIDNamingPattern",
+                    "ruleIndex": 3,
+                    "message": {
+                        "text": "Please use the correct ID Naming Pattern that define on the wiki"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/layout/fragment_second.xml"
+                                },
+                                "region": {
+                                    "startLine": 18,
+                                    "startColumn": 5,
+                                    "endLine": 26,
+                                    "endColumn": 69,
+                                    "charOffset": 746,
+                                    "charLength": 405,
+                                    "snippet": {
+                                        "text": "<Button\n        android:id=\"@+id/button_second\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/previous\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/textview_second\" />"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 16,
+                                    "endLine": 29,
+                                    "snippet": {
+                                        "text": "        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <Button\n        android:id=\"@+id/button_second\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"@string/previous\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/textview_second\" />\n</androidx.constraintlayout.widget.ConstraintLayout"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "6a505f65fcff6d02"
+                    }
+                }
+            ]
+        }
+    ]
+}
