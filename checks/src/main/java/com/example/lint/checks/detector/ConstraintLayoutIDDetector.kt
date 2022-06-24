@@ -12,12 +12,11 @@ import com.example.lint.checks.Constants.Companion.priority
 import com.example.lint.checks.Constants.Companion.severity
 import org.w3c.dom.Element
 
-class TextViewIDDetector : ResourceXmlDetector() {
+class ConstraintLayoutIDDetector : ResourceXmlDetector() {
 
     companion object {
-        private const val VIEW = "TextView"
-//        private const val VIEW2 = "Button"
-        private const val PATTERN = "_text_view"
+        private const val VIEW = "androidx.appcompat.widget.LinearLayoutCompat"
+        private const val PATTERN = "_layout"
 
         /**
          * Issue describing the problem and pointing to the detector
@@ -32,7 +31,7 @@ class TextViewIDDetector : ResourceXmlDetector() {
             priority = priority,
             severity = severity,
             implementation = Implementation(
-                TextViewIDDetector::class.java,
+                ConstraintLayoutIDDetector::class.java,
                 Scope.RESOURCE_FILE_SCOPE
             )
         )
