@@ -12,14 +12,14 @@ lintOptions {
 
 dependencies {
     // For a description of the below dependencies, see the main project README
-    compileOnly "com.android.tools.lint:lint-api:30.2.0"
+    compileOnly "com.android.tools.lint:lint-api:30.2.1"
     // You typically don't need this one:
-    compileOnly "com.android.tools.lint:lint-checks:30.2.0"
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21"
+    compileOnly "com.android.tools.lint:lint-checks:30.2.1"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0"
 
     testImplementation "junit:junit:4.13.2"
-    testImplementation "com.android.tools.lint:lint:30.2.0"
-    testImplementation "com.android.tools.lint:lint-tests:30.2.0"
+    testImplementation "com.android.tools.lint:lint:30.2.1"
+    testImplementation "com.android.tools.lint:lint-tests:30.2.1"
 }
 
 sourceCompatibility = "1.8"
