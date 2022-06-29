@@ -13,5 +13,5 @@ object Constants {
 
     val category = Category.CORRECTNESS
     const val priority = 5
-    val severity = Severity.WARNING
+    val severity = Severity.ERROR
 }
