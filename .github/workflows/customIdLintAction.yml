@@ -2,7 +2,7 @@ name: "Upload SARIF"
 
 # Run workflow each time code is pushed to your repository and on a schedule.
 # The scheduled workflow runs every Thursday at 15:45 UTC.
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -14,16 +14,14 @@ jobs:
       actions: read
       contents: read
     steps:
-      - name: check custom lint
-        run: ./gradlew :app:lint
       # This step checks out a copy of your repository.
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: check custom lint
+        run: ./gradlew :app:lint
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: results.sarif
+          sarif_file: lint-results.sarif
           # Optional category for the results
-          # Used to differentiate multiple results for one commit
-          category: my-analysis-tool
